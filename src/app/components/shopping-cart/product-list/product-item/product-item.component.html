@@ -1,0 +1,15 @@
+<div class="contariner">
+  <div class="card mb-4 shadow-sm">
+    <img class="overflow-auto card-img-top p-2"
+     [src]="productItem.filePath">
+    <strong class="d-flex justify-content-end p-1 mx-2" style="color: red;">{{productItem.price | currency: 'EUR' }}</strong>
+    <div class="card-header">
+      {{productItem.name}}
+    </div>
+    <div class="card-body">
+      {{productItem.description | slice: 0:50 }}...
+    </div>
+    <button type="button" class="btn btn-sm btn-secondary">View Details</button>
+    <button type="button" class="btn btn-primary btn-sm" (click)="handleAddToCart()">Add to Cart</button>
+  </div>
+</div>
