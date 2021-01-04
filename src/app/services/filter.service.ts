@@ -11,13 +11,8 @@ export class FilterService {
 
   constructor() { }
 
-  // sendFilter(...params: any[]) {
-  //   this.subject.next(...params)
-  // }
-
-
   sendFilter(params: any) {
-    this.subject.next(params)
+    this.subject.next(params);
   }
 
   getFilter() {

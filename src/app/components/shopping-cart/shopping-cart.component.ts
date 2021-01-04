@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { FilterService } from 'src/app/services/filter.service';
+
 
 @Component({
   selector: 'app-shopping-cart',
@@ -8,10 +10,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ShoppingCartComponent implements OnInit {
 
+  reset: any[] = [{}];
+  resetFilter: any;
 
-  constructor () { }
+  constructor (
+    private filterService: FilterService
+  ) { }
 
   ngOnInit(): void {
+    this.getFilter()
+  }
+
+  getFilter() {
+    this.filterService.getFilter().subscribe(res => {
+      if (res !== null) {
+        return false
+      }
+      this.onReset()
+    })
+  }
+
+  onReset() {
+    this.reset[0] = {}
   }
 
 

@@ -45,6 +45,7 @@ export class FiltersComponent implements OnInit {
   clearFilter() {
     this.brand = '';
     this.category = '';
-    this.filterService.sendFilter({})
+    this.filterService.sendFilter(null);
   }
+
 }
