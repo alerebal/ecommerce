@@ -1,0 +1,16 @@
+<div class="container" *ngIf="product">
+  <div class="card col-md-8 border-0 mx-auto mt-5 text-center">
+    <div class="card-header bg-transparent ">
+      <h4 class="cart-title">{{product.name}}</h4>
+      <h6 class="card-subtitle">{{product.brand}}</h6>
+    </div>
+    <div class="card-body ">
+      <img [src]="product.filePath" class="overflow-auto card-img-top p-2">
+      <p>{{product.description}}</p>
+    </div>
+    <div class="card-footer">
+      <button class="btn btn-primary" (click)="handleAddToCart()">Add to cart</button>
+      <button class="btn btn-primary mx-2" [routerLink]="['/shop']"  >Back to shop</button>
+    </div>
+  </div>
+</div>

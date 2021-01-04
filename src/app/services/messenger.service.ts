@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
-import { Product } from '../interfaces/Product';
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +10,8 @@ export class MessengerService {
 
   constructor() { }
 
-  sendMsg(product: Product) {
-    this.subject.next(product);
+  sendMsg(product: any, message: string) {
+    this.subject.next({product, message});
   }
 
   getMsg() {

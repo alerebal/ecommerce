@@ -1,1 +1,45 @@
-<p>filters works!</p>
+<div class="container m-0 p-0">
+  <h5 >Filter by:</h5>
+  <h6>Brand</h6>
+    <div class="btn-group mb-3" role="group" aria-label="Basic radio toggle button group" (change)="brandSelected($event)">
+
+      <input type="radio" class="btn-check" name="brand" id="asus" autocomplete="off">
+      <label class="btn btn-outline-primary" for="asus">Asus</label>
+
+      <input type="radio" class="btn-check" name="brand" id="hp" autocomplete="off" >
+      <label class="btn btn-outline-primary" for="hp">HP</label>
+
+      <input type="radio" class="btn-check" name="brand" id="lenovo" autocomplete="off">
+      <label class="btn btn-outline-primary" for="lenovo">Lenovo</label>
+
+      <input type="radio" class="btn-check" name="brand" id="toshiba" autocomplete="off">
+      <label class="btn btn-outline-primary" for="toshiba">Toshiba</label>
+
+    </div>
+  <h6>Category</h6>
+    <div class="btn-group mb-3" role="group" aria-label="Basic radio toggle button group" (change)="categorySelect($event)">
+
+      <input type="radio" class="btn-check" name="category" id="laptop" autocomplete="off">
+      <label class="btn btn-outline-primary" for="laptop">Laptop</label>
+
+      <input type="radio" class="btn-check" name="category" id="mouse" autocomplete="off" >
+      <label class="btn btn-outline-primary" for="mouse">Mouse</label>
+
+      <input type="radio" class="btn-check" name="category" id="keyboard" autocomplete="off">
+      <label class="btn btn-outline-primary" for="keyboard">Keyboard</label>
+
+    </div>
+
+    <div class="btn-group d-flex justify-content-between">
+      <button class="btn btn-primary btn-sm mx-2" (click)="sendFilter()">Filter</button>
+      <button class="btn btn-primary btn-sm mx-2" (click)="clearFilter()">Clear</button>
+    </div>
+
+</div>
+
+
+
+
+
+
+

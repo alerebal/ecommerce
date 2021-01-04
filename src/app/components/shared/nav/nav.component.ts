@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { UsersService } from 'src/app/services/users.service';
+
 @Component({
   selector: 'app-nav',
   templateUrl: './nav.component.html',
@@ -7,7 +9,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public usersService: UsersService
+  ) { }
 
   ngOnInit(): void {
   }

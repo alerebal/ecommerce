@@ -1,6 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule} from '@angular/forms';
+
+// fontAwesome
+// import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,6 +19,13 @@ import { CartItemComponent } from './components/shopping-cart/cart/cart-item/car
 import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 
+import { AuthGuard } from './auth.guard';
+import { TokenInterceptorService} from 'src/app/services/token-interceptor.service';
+import { CapitalizePipe } from './capitalize.pipe';
+import { ProductViewComponent } from './components/product-view/product-view.component';
+
+
+
 
 @NgModule({
   declarations: [
@@ -28,14 +39,25 @@ import { LoginComponent } from './components/login/login.component';
     ProductItemComponent,
     CartItemComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    CapitalizePipe,
+    ProductViewComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [
+    AuthGuard,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptorService,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -3,6 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import { Product } from 'src/app/interfaces/Product';
 import { MessengerService } from 'src/app/services/messenger.service';
 import { CartService } from 'src/app/services/cart.service';
+import { User } from 'src/app/interfaces/User';
+import { UsersService } from 'src/app/services/users.service';
+import { CartItem } from 'src/app/models/CartItem';
 
 @Component({
   selector: 'app-cart',
@@ -11,25 +14,66 @@ import { CartService } from 'src/app/services/cart.service';
 })
 export class CartComponent implements OnInit {
 
-  cartList: Product[] = [];
+  cartList: any[] = [];
+  cartListItems: any[] = [];
+  user: User;
+  userId: string;
+  cartTotal: number;
+  message: string = '';
+  classMsg: string;
 
   constructor(
     private msg: MessengerService,
-    private cartService: CartService
+    private cartService: CartService,
+    private usersService: UsersService
   ) { }
 
   ngOnInit(): void {
-    this.handleAddToCartList();
+    this.getUser();
+    this.handleToGetCart();
   }
 
-  handleAddToCartList() {
-    this.msg.getMsg().subscribe((product: Product) => {
-      this.cartList.push(product);
-      this.cartService.addToCart('33', product).subscribe(res => {
-        console.log(res);
-      })
+  getUser() {
+    this.usersService.getUser(localStorage.getItem('userId')).subscribe(res => {
+      this.user = res;
+      this.userId = res._id;
+      this.loadCartItems();
+    })
+  }
+
+  handleToGetCart() {
+    this.msg.getMsg().subscribe((res: any) => {
+      // let msgFromMsgServ = res.message;
+      // let name = res.product.name;
+      // if(msgFromMsgServ === 'added') {
+      //   this.message = `The product ${name} has been added`;
+      //   this.classMsg = 'alert alert-success mt-3';
+      // }
+      // if (msgFromMsgServ === 'deleted') {
+      //   this.message = `The product ${name} has been deleted`;
+      //   this.classMsg = 'alert alert-danger mt-3';
+      // }
+      // setTimeout(() => {
+      //   this.message = ''
+      // }, 3000)
+      this.loadCartItems();
     })
 
+  }
+
+
+  loadCartItems() {
+    this.cartService.getCartItems(this.user._id).subscribe(res => {
+      this.cartList = res;
+      this.calcCartItems()
+    })
+  }
+
+  calcCartItems() {
+    this.cartTotal = 0;
+    this.cartList.forEach(item => {
+      this.cartTotal += (item.qty * item.price)
+    })
   }
 
 

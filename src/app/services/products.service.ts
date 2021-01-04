@@ -18,4 +18,8 @@ export class ProductsService {
     return this.http.get<Product[]>(productsUrl);
   }
 
+  getProduct(id: string): Observable<Product> {
+    return this.http.get<Product>(`${productsUrl}/${id}`);
+  }
+
 }
