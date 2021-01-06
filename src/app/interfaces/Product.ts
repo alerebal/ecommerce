@@ -6,5 +6,6 @@ export interface Product {
   price: number,
   category: string,
   filePath: string,
+  filePathArray: [string],
   fileId: string
 }

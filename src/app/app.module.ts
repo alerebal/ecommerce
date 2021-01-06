@@ -3,8 +3,6 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 
-// fontAwesome
-// import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -23,6 +21,7 @@ import { AuthGuard } from './auth.guard';
 import { TokenInterceptorService} from 'src/app/services/token-interceptor.service';
 import { CapitalizePipe } from './capitalize.pipe';
 import { ProductViewComponent } from './components/product-view/product-view.component';
+import { PaymentComponent } from './component/payment/payment.component';
 
 
 
@@ -41,7 +40,8 @@ import { ProductViewComponent } from './components/product-view/product-view.com
     RegisterComponent,
     LoginComponent,
     CapitalizePipe,
-    ProductViewComponent
+    ProductViewComponent,
+    PaymentComponent
   ],
   imports: [
     BrowserModule,

@@ -2,10 +2,33 @@
   <div class="card col-md-8 border-0 mx-auto mt-5 text-center">
     <div class="card-header bg-transparent ">
       <h4 class="cart-title">{{product.name}}</h4>
-      <h6 class="card-subtitle">{{product.brand}}</h6>
+      <h6 class="card-subtitle">{{product.brand | capitalize}}</h6>
     </div>
+
     <div class="card-body ">
-      <img [src]="product.filePath" class="overflow-auto card-img-top p-2">
+      <!-- <img [src]="product.filePathArray[0]" class="overflow-auto card-img-top p-2"> -->
+      <div class="carousel">
+
+        <div id="carousel" class="carousel slide carousel-fade carousel-dark" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img [src]="product.filePathArray[0]" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item" *ngFor="let img of slideList">
+              <img [src]="img" class="d-block w-100" alt="...">
+            </div>
+          </div>
+          <a class="carousel-control-prev" href="#carousel" role="button" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carousel" role="button" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </a>
+        </div>
+
+      </div>
       <p>{{product.description}}</p>
     </div>
     <div class="card-footer">

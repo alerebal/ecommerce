@@ -1,7 +1,9 @@
 <div class="contariner">
   <div class="card  mb-4 shadow-sm">
     <img class="overflow-auto card-img-top p-2"
-     [src]="productItem.filePath">
+     [src]="productItem.filePath || productItem.filePathArray[0]">
+    <!-- <img class="overflow-auto card-img-top p-2"
+     [src]="productItem.filePathArray[0]"> -->
     <strong class="d-flex justify-content-end p-1 mx-2" style="color: red;">{{productItem.price | currency: 'EUR': 'symbol' : '1.0-0'  }}</strong>
     <div class="card-header">
       {{productItem.name}}

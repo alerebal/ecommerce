@@ -15,6 +15,7 @@ export class ProductViewComponent implements OnInit {
 
   product: Product;
   userId: string;
+  slideList: any[] = []
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -27,16 +28,25 @@ export class ProductViewComponent implements OnInit {
     this.activatedRoute.params.subscribe(param => {
       this.productsService.getProduct(param.id).subscribe((product: Product) => {
         this.product = product;
+        this.getSlideList()
       }
       )
     });
     this.userId = localStorage.getItem('userId');
+
   }
 
   handleAddToCart() {
     this.cartService.addToCart(this.userId, this.product).subscribe(res => {
       this.msg.sendMsg(this.product, 'added');
     })
+  }
+
+  getSlideList() {
+    const arr = this.product.filePathArray;
+    for(let i = 1; i < arr.length; i++) {
+      this.slideList.push(arr[i]);
+    }
   }
 
 }
