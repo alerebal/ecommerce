@@ -15,12 +15,12 @@ import { CartItem } from 'src/app/models/CartItem';
 export class CartComponent implements OnInit {
 
   cartList: any[] = [];
-  cartListItems: any[] = [];
+  // cartListItems: any[] = [];
   user: User;
   userId: string;
   cartTotal: number;
-  message: string = '';
-  classMsg: string;
+  // message: string = '';
+  // classMsg: string;
 
   constructor(
     private msg: MessengerService,

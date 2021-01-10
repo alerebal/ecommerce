@@ -21,7 +21,8 @@ import { AuthGuard } from './auth.guard';
 import { TokenInterceptorService} from 'src/app/services/token-interceptor.service';
 import { CapitalizePipe } from './capitalize.pipe';
 import { ProductViewComponent } from './components/product-view/product-view.component';
-import { PaymentComponent } from './component/payment/payment.component';
+import { PaymentComponent } from './components/payment/payment.component';
+import { AfterPayComponent } from './components/after-pay/after-pay.component';
 
 
 
@@ -41,7 +42,8 @@ import { PaymentComponent } from './component/payment/payment.component';
     LoginComponent,
     CapitalizePipe,
     ProductViewComponent,
-    PaymentComponent
+    PaymentComponent,
+    AfterPayComponent
   ],
   imports: [
     BrowserModule,

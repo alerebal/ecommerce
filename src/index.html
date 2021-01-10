@@ -6,6 +6,12 @@
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+  <script src="https://js.stripe.com/v3/"></script>
+  <script>
+    const stripe = Stripe('pk_test_51I6YVCLiYMviak6SlZEnt1JNLdrLFqfFAliSWEqOFYhSQDi68V9ejOERnY0O0x1OoXDktK5AfyOnWP4DQoTsEWEE00OtVmMsbF');
+    const elements = stripe.elements();
+  </script>
 </head>
 <body>
   <app-root></app-root>

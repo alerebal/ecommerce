@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="successPay" *ngIf="successPay">
+    <h3 class="successMsg">
+      Your transaction has been successful</h3>
+    <a href="{{receiptUrl}}" target="_blank" rel="noopener noreferrer">Here</a> is your receipt.
+  </div>
+  <div class="errorPay" *ngIf="errorPay">
+    <h3 class="errorMsg">
+      There has been a problem. Please try again
+    </h3>
+  </div>
+</div>

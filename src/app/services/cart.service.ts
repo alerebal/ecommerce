@@ -54,4 +54,8 @@ export class CartService {
     }))
   }
 
+  getCarItemstoPayment(id: string): Observable<CartItem[]> {
+    return this.http.get<CartItem[]>(`${cartItemsUrl}/${id}`);
+  }
+
 }
