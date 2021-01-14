@@ -5,6 +5,9 @@ import { Product } from 'src/app/interfaces/Product';
 import { ProductsService } from 'src/app/services/products.service';
 import { CartService } from 'src/app/services/cart.service';
 import { MessengerService } from 'src/app/services/messenger.service';
+import { userId } from 'src/app/config/global';
+import { UsersService } from 'src/app/services/users.service';
+
 
 @Component({
   selector: 'app-product-view',
@@ -15,14 +18,18 @@ export class ProductViewComponent implements OnInit {
 
   product: Product;
   userId: string;
+  isUser: boolean;
   slideList: any[] = []
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private productsService: ProductsService,
     private cartService: CartService,
-    private msg: MessengerService
-  ) { }
+    private msg: MessengerService,
+    private usersService: UsersService
+  ) {
+    this.userId = userId
+   }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(param => {
@@ -32,14 +39,24 @@ export class ProductViewComponent implements OnInit {
       }
       )
     });
-    this.userId = localStorage.getItem('userId');
+    this.getUserLogged()
+  }
 
+  getUserLogged() {
+    if(this.usersService.loggedIn()) {
+      this.isUser = true
+    } else {
+      this.isUser = false
+    }
   }
 
   handleAddToCart() {
-    this.cartService.addToCart(this.userId, this.product).subscribe(res => {
-      this.msg.sendMsg(this.product, 'added');
-    })
+    this.cartService.addToCart(this.userId, this.product).subscribe(res => { this.msg.sendMsg(this.product, 'added');})
+  }
+
+  handleAddToCartLocal() {
+    this.cartService.addToCartLocal(this.product);
+    this.msg.sendMsg(this.product, 'added');
   }
 
   getSlideList() {

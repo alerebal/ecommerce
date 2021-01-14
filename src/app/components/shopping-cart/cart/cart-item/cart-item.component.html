@@ -1,8 +1,12 @@
 <div class="cartItem">
   <span>{{ cartItem.name }} x </span><span>{{ cartItem.qty }}: </span>
   <strong>{{ (cartItem.qty * cartItem.price) | currency: 'EUR': 'symbol' : '1.0-0' }}</strong>
-  <div class="btn-group float-end">
+  <div class="btn-group float-end" *ngIf="isUser">
     <button class="btn btn-primary btn-sm mx-1" (click)="handleAddToCart(cartItem.productId, cartItem.userId)">+</button>
     <button class="btn btn-danger btn-sm" (click)="handleDeleteFromCart(cartItem._id)">-</button>
+  </div>
+  <div class="btn-group float-end" *ngIf="!isUser">
+    <button class="btn btn-primary btn-sm mx-1" (click)="handleAddToCartLocal(cartItem.productId)">+</button>
+    <button class="btn btn-danger btn-sm" (click)="handleDeleteFromCartLocal(cartItem.productId)">-</button>
   </div>
 </div>

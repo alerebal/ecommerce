@@ -32,7 +32,8 @@
       <p>{{product.description}}</p>
     </div>
     <div class="card-footer">
-      <button class="btn btn-primary" (click)="handleAddToCart()">Add to cart</button>
+      <button *ngIf="isUser" class="btn btn-primary" (click)="handleAddToCart()">Add to cart</button>
+      <button *ngIf="!isUser" class="btn btn-primary" (click)="handleAddToCartLocal()">Add to cart</button>
       <button class="btn btn-primary mx-2" [routerLink]="['/shop']"  >Back to shop</button>
     </div>
   </div>

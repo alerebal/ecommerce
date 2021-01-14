@@ -12,6 +12,7 @@
       {{productItem.description | slice: 0:50 }}...
     </div>
     <button type="button" class="btn btn-sm btn-secondary" (click)="sendToView(productItem._id)">View Details</button>
-    <button type="button" class="btn btn-primary btn-sm" (click)="handleAddToCart()">Add to Cart</button>
+    <button *ngIf="isUser" type="button" class="btn btn-primary btn-sm" (click)="handleAddToCart()">Add to Cart</button>
+    <button *ngIf="!isUser" type="button" class="btn btn-primary btn-sm" (click)="handleAddToCartLocal()">Add to Cart</button>
   </div>
 </div>

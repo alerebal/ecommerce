@@ -11,12 +11,13 @@ import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.
 
 const routes: Routes = [
   {path: '',redirectTo: '/shop', pathMatch: 'full' },
-  {path: 'shop', component: ShoppingCartComponent, canActivate: [AuthGuard]},
+  {path: 'shop', component: ShoppingCartComponent},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'productView/:id', component: ProductViewComponent},
   {path: 'payment', component: PaymentComponent},
   // {path: '**', redirectTo: '/login', pathMatch: 'full' }
+  // , canActivate: [AuthGuard]
 ];
 
 @NgModule({

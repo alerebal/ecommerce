@@ -1,9 +1,11 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Product } from 'src/app/interfaces/Product';
 import { MessengerService } from 'src/app/services/messenger.service';
 import { CartService } from 'src/app/services/cart.service';
+import { UsersService } from 'src/app/services/users.service';
+import { userId } from 'src/app/config/global';
 
 @Component({
   selector: 'app-product-item',
@@ -13,27 +15,41 @@ import { CartService } from 'src/app/services/cart.service';
 export class ProductItemComponent implements OnInit {
 
   @Input() productItem: Product;
+  localListProducts: any[] = [];
   userId: string;
+  isUser: boolean;
 
   constructor(
     private msg: MessengerService,
     private cartService: CartService,
-    private router: Router
+    private router: Router,
+    private usersService: UsersService
   ) { }
 
   ngOnInit(): void {
-    this.getUser()
+    this.userId = userId
+    this.getUserLogged()
   }
 
+  getUserLogged() {
+    if(this.usersService.loggedIn()) {
+      this.isUser = true
+    } else {
+      this.isUser = false
+    }
+  }
+
+
   handleAddToCart() {
-    this.cartService.addToCart(this.userId, this.productItem).subscribe(res => {
+    this.cartService.addToCart(userId, this.productItem).subscribe(res => {
       this.msg.sendMsg(this.productItem, 'added');
     },
     err => console.log(err));
   }
 
-  getUser() {
-    return this.userId = localStorage.getItem('userId');
+  handleAddToCartLocal() {
+    this.cartService.addToCartLocal(this.productItem);
+    this.msg.sendMsg(this.productItem, 'added');
   }
 
   sendToView(id: string) {

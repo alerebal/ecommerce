@@ -14,6 +14,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
   logInForm: FormGroup;
   @ViewChild('focus') focus: ElementRef;
   errorMsg: string = "";
+  userId: string;
 
   constructor(
     private fb: FormBuilder,
@@ -39,7 +40,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
   logIn() {
     this.usersService.logIn(this.logInForm.value).subscribe(res => {
       localStorage.setItem('token', res['token']);
-      localStorage.setItem('userId', res['userId'])
+      localStorage.setItem('userId', res['userId']);
       this.router.navigate(['/shop']);
     },
     err => {
@@ -50,6 +51,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
     });
   }
 
+
   get email() {
     return this.logInForm.get('email');
   }
@@ -59,3 +61,5 @@ export class LoginComponent implements OnInit, AfterViewInit {
   }
 
 }
+
+

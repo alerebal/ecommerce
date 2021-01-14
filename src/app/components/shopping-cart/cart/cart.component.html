@@ -1,5 +1,6 @@
-<div class="alert alert-info" *ngIf="cartList.length === 0">
-  <p *ngIf="user">{{user.name | capitalize}}, you cart is empty.</p>
+<div class="alert alert-info text-center" *ngIf="cartList.length === 0">
+  <p *ngIf="user">{{user.name | capitalize}}, your cart is empty.</p>
+  <p *ngIf="!user">Your cart is empty.</p>
 </div>
 <div class="cart" *ngIf="cartList.length > 0">
   <ul class="list-group" >
