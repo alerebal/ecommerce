@@ -1,6 +1,6 @@
 import { environment } from 'src/environments/environment';
 
-export const baseUrl = environment.production ? 'algo que pondré' : 'http://localhost:3100';
+export const baseUrl = environment.production ? 'https://git.heroku.com/alerebal-ecommerce-back.git' : 'http://localhost:3100';
 export const productsUrl = `${baseUrl}/products`;
 export const cartItemsUrl = `${baseUrl}/cartItems`;
 export const newUserUrl = `${baseUrl}/newUser`;
