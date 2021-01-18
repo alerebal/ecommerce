@@ -1,10 +1,9 @@
-import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { MessengerService } from 'src/app/services/messenger.service';
 import { CartService } from 'src/app/services/cart.service';
 import { User } from 'src/app/interfaces/User';
 import { UsersService } from 'src/app/services/users.service';
-import { userId } from 'src/app/config/global';
 
 @Component({
   selector: 'app-cart',
@@ -14,12 +13,9 @@ import { userId } from 'src/app/config/global';
 export class CartComponent implements OnInit {
 
   cartList: any[] = [];
-  // cartListItems: any[] = [];
   user: User;
   userId: string;
   cartTotal: number;
-  // message: string = '';
-  // classMsg: string;
   isUser: boolean;
 
   constructor(
@@ -27,16 +23,21 @@ export class CartComponent implements OnInit {
     private cartService: CartService,
     private usersService: UsersService,
   ) {
-    this.isUser = this.usersService.loggedIn();
-    this.userId = userId;
+    this.userId = localStorage.getItem('userId');
    }
 
   ngOnInit(): void {
-    this.getUser();
+    this.isUserGet();
     this.handleToGetCart();
     this.loadCartItems();
   }
 
+  isUserGet() {
+    this.isUser = this.usersService.loggedIn();
+    if (this.isUser) {
+      this.getUser();
+    }
+  }
 
   getUser() {
     this.usersService.getUser(this.userId).subscribe(res => {
@@ -58,6 +59,7 @@ export class CartComponent implements OnInit {
       if(this.cartList === null) {
         this.cartList = []
       }
+      this.calcCartItems()
     } else {
       this.cartService.getCartItems(this.userId).subscribe(res => {
         this.cartList = res;

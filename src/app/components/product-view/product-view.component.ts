@@ -5,7 +5,6 @@ import { Product } from 'src/app/interfaces/Product';
 import { ProductsService } from 'src/app/services/products.service';
 import { CartService } from 'src/app/services/cart.service';
 import { MessengerService } from 'src/app/services/messenger.service';
-import { userId } from 'src/app/config/global';
 import { UsersService } from 'src/app/services/users.service';
 
 
@@ -28,7 +27,7 @@ export class ProductViewComponent implements OnInit {
     private msg: MessengerService,
     private usersService: UsersService
   ) {
-    this.userId = userId
+    this.userId = localStorage.getItem('userId')
    }
 
   ngOnInit(): void {

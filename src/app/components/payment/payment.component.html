@@ -1,37 +1,47 @@
-<!-- <div class="container">
-  <div class="row mt-5">
-    <div class="col-md mb-5">
-      <app-cart></app-cart>
-    </div>
-    <div class="col-md">
-      <div class="credit-card border">
-        <div #cardInfo class="p-3"></div>
-        <div class="error" *ngIf="cardError">
-          {{cardError}}
-        </div>
-      </div>
-      <div class="d-grid">
-        <button class="btn btn-primary btn-block" (click)="onClick()" >Pay {{amount | currency: 'EUR'}}</button>
-      </div>
-    </div>
-  </div>
-  <div class="afterPay" *ngIf="afterPay">
-    <app-after-pay
-      [successPay]='successPay'
-      [errorPay]='errorPay'
-      [receiptUrl]='receiptUrl'
-    >
-    </app-after-pay>
-  </div>
-</div> -->
-
 <div class="container">
   <div class="row mt-5">
-    <div class="col-md mb-5">
-      <app-cart></app-cart>
+    <div class="col-md ">
+      <div class="card mb-5 shadow border-0">
+        <div class="card-header ">
+          <h5 class="text-dark
+           text-center">Your Cart</h5>
+        </div>
+        <div class="card-body">
+          <app-cart></app-cart>
+        </div>
+      </div>
+      <div class="col-md-6 mx-auto text-danger text-center">
+        <div class="note">
+          <p>This is a student project so it is for learning only, not a real ecommerce page</p>
+        </div>
+      </div>
     </div>
+
     <div class="col-md">
-      <app-card-payment></app-card-payment>
+      <div class="noUserForm" *ngIf="!isUser">
+        <div class="card mb-5 shadow border-0">
+          <div class="card-header ">
+            <h5 class="text-dark
+             text-center">We Need Some Data</h5>
+          </div>
+          <div class="card-body">
+            <p>A fake name and email will be valid</p>
+            <app-no-user-form ></app-no-user-form>
+          </div>
+        </div>
+      </div>
+      <div class="card shadow border-0">
+        <div class="card-header ">
+          <h5 class="text-dark text-center">
+            Fake Payment
+          </h5>
+        </div>
+        <div class="card-body">
+          <p >You can use this card number to test the app <span>4242 4242 4242 4242</span></p>
+          <p>Any valid expiration date and any value for the rest of the data</p>
+          <app-card-payment [isUser]="isUser"></app-card-payment>
+        </div>
+      </div>
     </div>
   </div>
 </div>

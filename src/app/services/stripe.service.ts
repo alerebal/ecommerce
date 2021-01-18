@@ -14,4 +14,8 @@ export class StripeService {
   sendToken(payment: any) {
     return this.http.post(stripeUrl, {payment});
   }
+
+  sendTokenNoUser(payment: any) {
+    return this.http.post(`${stripeUrl}NoUser`, {payment})
+  }
 }

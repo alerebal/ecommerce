@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
 import { FilterService } from 'src/app/services/filter.service';
-import { UsersService } from 'src/app/services/users.service';
 
 
 @Component({
@@ -15,8 +14,7 @@ export class ShoppingCartComponent implements OnInit {
   resetFilter: any;
 
   constructor (
-    private filterService: FilterService,
-    private usersService: UsersService
+    private filterService: FilterService
   ) {}
 
   ngOnInit(): void {

@@ -3,7 +3,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { passwordsMatchValidator } from 'src/app/directives/passwordValidator';
-import { User } from 'src/app/interfaces/User';
 import { UsersService } from 'src/app/services/users.service';
 
 

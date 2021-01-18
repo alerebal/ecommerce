@@ -35,16 +35,6 @@ export class CartService {
     }
     return localListProducts;
 
-
-    // if (!localListProducts) {
-    //   localListProducts = [];
-    //   localListProducts.push(newProduct);
-    //   localStorage.setItem('localListProducts', JSON.stringify(localListProducts))
-    // } else {
-    //   localListProducts.push(newProduct);
-    //   localStorage.setItem('localListProducts', JSON.stringify(localListProducts))
-    // }
-    // return localListProducts;
   }
 
   addProductFromCart(id: string, userId: string) {

@@ -1,0 +1,12 @@
+p {
+  font-size: small
+}
+
+span {
+  font-weight: bold;
+}
+
+
+.note p {
+  font-size: 1.3em;
+}

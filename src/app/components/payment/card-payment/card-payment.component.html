@@ -1,5 +1,5 @@
-<div class="container">
-  <div class="row mt-5">
+<div class="containerCardPayment">
+  <div class="row ">
     <div class="col-md">
       <div class="credit-card border">
         <div #cardInfo class="p-3"></div>
@@ -7,8 +7,11 @@
           {{cardError}}
         </div>
       </div>
-      <div class="d-grid">
+      <div class="d-grid" *ngIf="isUser">
         <button class="btn btn-primary btn-block" (click)="onClick()" >Pay {{amount | currency: 'EUR'}}</button>
+      </div>
+      <div class="d-grid" *ngIf="!isUser">
+        <button class="btn btn-primary btn-block" (click)="onClickNoUser()" [disabled]="!noUserEmailChecked">Pay</button>
       </div>
     </div>
   </div>

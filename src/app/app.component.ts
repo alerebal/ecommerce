@@ -22,6 +22,14 @@ export class AppComponent implements OnInit {
   handleToGetCard() {
     this.msg.getMsg().subscribe((res: any) => {
       let msgFromMsgServ = res.message;
+      if(res.product === null) {
+        this.message = `The transaction has been successful`
+        this.classMsg = 'alert alert-success mt-3';
+        setTimeout(() => {
+          this.message = ''
+        }, 3000)
+        return false
+      }
       let name = res.product.name;
       if(msgFromMsgServ === 'added') {
         this.message = `The product ${name} has been added`;
