@@ -25,6 +25,7 @@ import { PaymentComponent } from './components/payment/payment.component';
 import { AfterPayComponent } from './components/after-pay/after-pay.component';
 import { CardPaymentComponent } from './components/payment/card-payment/card-payment.component';
 import { NoUserFormComponent } from './components/no-user-form/no-user-form.component';
+import { HeaderComponent } from './components/shared/header/header.component';
 
 
 
@@ -47,7 +48,8 @@ import { NoUserFormComponent } from './components/no-user-form/no-user-form.comp
     PaymentComponent,
     AfterPayComponent,
     CardPaymentComponent,
-    NoUserFormComponent
+    NoUserFormComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
