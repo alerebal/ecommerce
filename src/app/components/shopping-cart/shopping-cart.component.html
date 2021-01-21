@@ -1,14 +1,16 @@
-<div class="container">
+<div class="container" >
   <div class="row mt-5">
     <div class="col-md-8" >
       <app-product-list></app-product-list>
     </div>
-    <div class="col-md-4">
-      <div >
-        <app-cart ></app-cart>
-      </div>
-      <div class="mt-5" >
-        <app-filters *ngFor="let r of reset"></app-filters>
+    <div class="col-md-4 ">
+      <div class="sidebar">
+        <div>
+          <app-cart ></app-cart>
+        </div>
+        <div class="mt-5" >
+          <app-filters *ngFor="let r of reset"></app-filters>
+        </div>
       </div>
     </div>
   </div>

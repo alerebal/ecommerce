@@ -40,12 +40,14 @@ export class FiltersComponent implements OnInit {
       this.filter.category = this.category
     }
     this.filterService.sendFilter(this.filter);
+    document.getElementById('containerAnchor').scrollIntoView({behavior: 'smooth'});
   }
 
   clearFilter() {
     this.brand = '';
     this.category = '';
     this.filterService.sendFilter(null);
+    document.getElementById('containerAnchor').scrollIntoView({behavior: 'smooth'});
   }
 
 }
