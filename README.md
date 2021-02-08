@@ -1,6 +1,18 @@
 # Ecommerce
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.3.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.3 and updated to Angular version 9.1.13
+
+In this project I started to learn about Stripe and applied it in
+              a simple way. It does not work as I would like, I am trying to fix
+              some things. I am going to learn about Redux as my next goal and
+              apply it here as well. Another next step in this project will be
+              to make it responsive for small screens. It does right now, but
+              not how I like it. I used Node and Express on the backend, using
+              bcryptjs, json web token, cors and several more modules,
+              Cloudinary as the file server, MongoDb as the database, and
+              Angular on the frontend and Bootstrap.
+              
+I deployed it in Vercel
 
 ## Development server
 
